@@ -2,6 +2,30 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:4000";
 
+export const EVENTS_FETCHED = "EVENTS_FETCHED";
+
+export function events(events) {
+  return {
+    type: EVENTS_FETCHED,
+    payload: events
+  };
+}
+
+export function loadEvents() {
+  return async function(dispatch) {
+    try {
+      const response = await axios.get(`${baseUrl}/event`);
+      const { data } = response;
+
+      // this.props.dispatch(rooms(data))
+      const action = events(data);
+      dispatch(action);
+    } catch (error) {
+      throw error;
+    }
+  };
+}
+
 export const EVENT_CREATE_SUCCESS = "EVENT_CREATE_SUCCESS";
 
 function createEventSuccess(event) {
