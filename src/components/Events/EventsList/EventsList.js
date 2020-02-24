@@ -7,7 +7,9 @@ class EventsList extends Component {
 
     return (
       <div>
-        <h1>{this.props.title}</h1>
+        <Link to="/ticket">
+          <li>{this.props.title}</li>
+        </Link>
         <p>{this.props.image}</p>
         <p>{this.props.date}</p>
         <p>{this.props.description}</p>
