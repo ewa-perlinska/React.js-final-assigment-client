@@ -13,7 +13,7 @@ function createEventSuccess(event) {
 
 export const createEvent = (title, date, imageUrl) => {
   return async function(dispatch, getState) {
-    const token = getState().user.token;
+    const token = getState().auth.data;
 
     console.log(title, date, imageUrl);
     dispatch({ type: "TESTING" });
