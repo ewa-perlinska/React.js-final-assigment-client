@@ -3,7 +3,7 @@ import React from "react";
 const LoginForm = props => {
   return (
     <div>
-      Login:
+      Login
       <form onSubmit={props.handleSubmit}>
         <label>Email:</label>
 
@@ -26,5 +26,4 @@ const LoginForm = props => {
     </div>
   );
 };
-
 export default LoginForm;

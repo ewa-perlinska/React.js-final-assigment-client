@@ -20,7 +20,6 @@ function App() {
             <li>Login!</li>
           </Link>
         </nav>
-
         <Route exact path="/" component={Test} />
         <Route exact path="/signup" component={SignupContainer} />
         <Route exact path="/login" component={LoginContainer} />
