@@ -1,18 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import EventsListContainer from "../Events/EventsList/EventsListContainer";
 
 function Home(props) {
   return (
     <div>
-      {/* {props.events.map(event => (
-        <h1>{event.title}</h1>
-      ))} */}
+      <EventsListContainer />
     </div>
   );
 }
-
-// const mapStateToProps = state => ({ events: state.events });
-
-// export default connect(mapStateToProps)(Home);
 
 export default connect()(Home);
