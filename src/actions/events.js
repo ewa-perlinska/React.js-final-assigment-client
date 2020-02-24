@@ -11,11 +11,11 @@ function createEventSuccess(event) {
   };
 }
 
-export const createEvent = (title, date, imageUrl) => {
+export const createEvent = (title, imageUrl, date, description) => {
   return async function(dispatch, getState) {
     const token = getState().auth.data;
 
-    console.log(title, date, imageUrl);
+    console.log(title, imageUrl, date, description);
     dispatch({ type: "TESTING" });
 
     const response = await axios({
@@ -24,8 +24,9 @@ export const createEvent = (title, date, imageUrl) => {
       headers: { authorization: `Bearer ${token}` },
       data: {
         title,
+        imageUrl,
         date,
-        imageUrl
+        description
       }
     });
 
