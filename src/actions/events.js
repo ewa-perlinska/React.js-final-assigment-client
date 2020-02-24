@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const baseUrl = "http://localhost:4000";
+
 export const EVENT_CREATE_SUCCESS = "EVENT_CREATE_SUCCESS";
 
 function createEventSuccess(event) {
@@ -11,12 +13,10 @@ function createEventSuccess(event) {
   };
 }
 
-export const createEvent = (title, imageUrl, date, description) => {
+export const createEvent = (title, image, date, description) => {
   return async function(dispatch, getState) {
-    const token = getState().auth.data;
-
-    console.log(title, imageUrl, date, description);
-    dispatch({ type: "TESTING" });
+    const stateData = getState().auth.data;
+    const token = stateData.token;
 
     const response = await axios({
       method: "POST",
@@ -24,7 +24,7 @@ export const createEvent = (title, imageUrl, date, description) => {
       headers: { authorization: `Bearer ${token}` },
       data: {
         title,
-        imageUrl,
+        image,
         date,
         description
       }
