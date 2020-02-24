@@ -5,16 +5,28 @@ import EventsList from "./EventsList";
 
 class EventsListContainer extends React.Component {
   componentDidMount() {
+    console.log("this.props.events?????", this.props.events);
+
     this.props.loadEvents();
   }
   render() {
-    if (!this.props.events) {
-      return "Loading...";
-    }
-
     return (
       <div>
-        <EventsList events={this.props.events} />
+        {!this.props.events ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="Searcher">
+            {this.props.events.map(event => (
+              <EventsList
+                title={event.title}
+                key={event.id}
+                imageUrl={event.imageUrl}
+                date={event.date}
+                description={event.description}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
