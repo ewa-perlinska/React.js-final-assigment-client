@@ -1,11 +1,24 @@
-import { EVENT_CREATE_SUCCESS } from "../actions/events";
+import { EVENT_CREATE_SUCCESS, EVENTS_FETCHED } from "../actions/events";
 
-export default (state = [], action = {}) => {
+const initialState = {
+  allEvents: [],
+  selectedEvent: {}
+};
+
+export default function(state = initialState, action) {
   switch (action.type) {
+    case EVENTS_FETCHED:
+      return {
+        ...state,
+        allEvents: [...action.payload]
+      };
     case EVENT_CREATE_SUCCESS:
-      return [...state, action.payload.event];
-
+      return {
+        ...state,
+        allEvents: [...state.allEvents, action.payload],
+        selectedEvent: action.payload
+      };
     default:
       return state;
   }
-};
+}

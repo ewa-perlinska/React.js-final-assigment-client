@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 import auth from "./auth";
-import createdEvent from "./events";
+import eventsReducer from "./events";
 
-export default combineReducers({ auth: auth, createdEvent: createdEvent });
+export default combineReducers({ auth: auth, events: eventsReducer });

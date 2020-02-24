@@ -43,7 +43,7 @@ export const createEvent = (title, image, date, description) => {
 
     const response = await axios({
       method: "POST",
-      url: "http://localhost:4000/events",
+      url: "http://localhost:4000/event",
       headers: { authorization: `Bearer ${token}` },
       data: {
         title,
