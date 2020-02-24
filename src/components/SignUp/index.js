@@ -44,4 +44,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect()(SignupFormContainer);
+export default connect(mapStateToProps)(SignupFormContainer);
