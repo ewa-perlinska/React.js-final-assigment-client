@@ -17,7 +17,6 @@ export function loadEvents() {
       const response = await axios.get(`${baseUrl}/event`);
       const { data } = response;
 
-      // this.props.dispatch(rooms(data))
       const action = events(data);
       dispatch(action);
     } catch (error) {
