@@ -38,9 +38,17 @@ class CreateEventContainer extends Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
+        <div>{this.props.createEvent}</div>
       </div>
     );
   }
 }
 
-export default connect()(CreateEventContainer);
+const mapStateToProps = state => {
+  console.log("STATE IN MSTP", state);
+  return {
+    eventCreated: state.event
+  };
+};
+
+export default connect(mapStateToProps)(CreateEventContainer);
