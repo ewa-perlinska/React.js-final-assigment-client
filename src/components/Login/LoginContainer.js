@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
-import { login } from "../../actions/auth.js";
+// import { login } from "../../actions/auth.js";
 
 class LoginContainer extends Component {
   state = {
@@ -9,17 +9,17 @@ class LoginContainer extends Component {
     password: ""
   };
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  // handleChange = event => {
+  //   this.setState({ [event.target.name]: event.target.value });
+  // };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log("login handlesubmit state", this.state);
-    // console.log("login handlesubmit props", this.props);
-    this.props.dispatch(login(this.state.email, this.state.password));
-    this.setState({ email: "", password: "" });
-  };
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   console.log("login handlesubmit state", this.state);
+  //   // console.log("login handlesubmit props", this.props);
+  //   this.props.dispatch(login(this.state.email, this.state.password));
+  //   this.setState({ email: "", password: "" });
+  // };
 
   componentDidUpdate(prevProps) {
     if (prevProps.userLoggedIn !== this.props.userLoggedIn) {
