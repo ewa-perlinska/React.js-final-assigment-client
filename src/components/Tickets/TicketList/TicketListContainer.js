@@ -18,12 +18,15 @@ class TicketListContainer extends React.Component {
           <div>Loading...</div>
         ) : (
           <div className="Searcher">
+            <p>Events name :{this.props.event.title}</p>
             {this.props.tickets.map(ticket => (
               <TicketsList
+                id={ticket.id}
                 key={ticket.id}
                 imageUrl={ticket.imageUrl}
                 price={ticket.price}
                 description={ticket.description}
+                eventId={this.props.event.id}
               />
             ))}
           </div>
