@@ -4,7 +4,7 @@ function TicketForm(props) {
   const {
     handleChange,
     handleSubmit,
-    values: { image, price, description }
+    values: { image, price, description, eventId }
   } = props;
 
   return (
