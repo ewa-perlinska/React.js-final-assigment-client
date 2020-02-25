@@ -11,36 +11,18 @@ export function tickets(tickets) {
   };
 }
 
-export function loadTickets() {
-  return async function(dispatch) {
+export function loadTickets(eventId) {
+  console.log("is this running ?");
+  return async function(dispatch, getState) {
     try {
-      const response = await axios.get(`${baseUrl}/ticket`);
+      // console.log("do i have my event id", getState().events.selectedEvent);
+      // const eventId = getState().events.selectedEvent.id;
+      console.log("do i have my event id", eventId);
+      const response = await axios.get(`${baseUrl}/ticket`, eventId);
       const { data } = response;
 
       const action = tickets(data);
       dispatch(action);
-    } catch (error) {
-      throw error;
-    }
-  };
-}
-
-export const ONE_EVENT_TICKETS_FETCHED = "ONE_EVENT_TICKETS_FETCHED";
-
-export function ticketsOneEvent(tickets) {
-  return {
-    type: ONE_EVENT_TICKETS_FETCHED,
-    payload: tickets
-  };
-}
-
-export function loadOneEventTickets(id) {
-  return async function(dispatch, getState) {
-    try {
-      const response = await axios.get(`${baseUrl}/ticket/${id}`);
-      // const { data } = response;
-      // const action = event(data);
-      dispatch(ticketsOneEvent(response.data));
     } catch (error) {
       throw error;
     }
@@ -83,3 +65,25 @@ export const createTicket = (image, price, description, eventId) => {
     dispatch(createTicketSuccess(response.data));
   };
 };
+
+//export const ONE_EVENT_TICKETS_FETCHED = "ONE_EVENT_TICKETS_FETCHED";
+
+// export function ticketsOneEvent(tickets) {
+//   return {
+//     type: ONE_EVENT_TICKETS_FETCHED,
+//     payload: tickets
+//   };
+// }
+
+// export function loadOneEventTickets() {
+//   return async function(dispatch, getState) {
+//     try {
+//       const response = await axios.get(`${baseUrl}/ticket`);
+//       // const { data } = response;
+//       // const action = event(data);
+//       dispatch(ticketsOneEvent(response.data));
+//     } catch (error) {
+//       throw error;
+//     }
+//   };
+// }

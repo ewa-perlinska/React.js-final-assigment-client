@@ -1,16 +1,16 @@
 import React from "react";
-import { loadOneEventTickets } from "../../../actions/tickets";
+import { loadTickets } from "../../../actions/tickets";
 import { connect } from "react-redux";
 import TicketsList from "./TicketList";
-import CreateTicketContainer from "../CreateTicketContainer";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    this.props.loadOneEventTickets();
+    console.log("JAKIE JA MAM PROPY?", this.props.event);
+    const eventId = this.props.event.id;
+    console.log("do i have event id in ticket component?", eventId);
+
+    this.props.loadTickets(eventId);
   }
-  // componentDidUpdate() {
-  //   this.props.loadTickets();
-  // }
   render() {
     return (
       <div>
@@ -28,7 +28,6 @@ class TicketListContainer extends React.Component {
             ))}
           </div>
         )}
-        <CreateTicketContainer />
       </div>
     );
   }
@@ -40,6 +39,4 @@ const mapStateToProps = state => ({
   event: state.events.selectedEvent
 });
 
-export default connect(mapStateToProps, { loadOneEventTickets })(
-  TicketListContainer
-);
+export default connect(mapStateToProps, { loadTickets })(TicketListContainer);

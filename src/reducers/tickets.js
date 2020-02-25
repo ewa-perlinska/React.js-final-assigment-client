@@ -2,6 +2,7 @@ import { TICKET_CREATE_SUCCESS, TICKETS_FETCHED } from "../actions/tickets";
 
 const initialState = {
   allTickets: [],
+  createdTicket: {},
   selectedTicket: {}
 };
 
@@ -16,7 +17,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         allTickets: [...state.allTickets, action.payload],
-        selectedTicket: action.payload
+        createTicket: action.payload
       };
     default:
       return state;
