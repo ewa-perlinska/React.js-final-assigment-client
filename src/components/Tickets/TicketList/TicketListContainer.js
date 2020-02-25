@@ -5,8 +5,9 @@ import TicketsList from "./TicketList";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    console.log("this.props.tickets?????", this.props.tickets);
-
+    this.props.loadTickets();
+  }
+  componentDidUpdate() {
     this.props.loadTickets();
   }
   render() {
