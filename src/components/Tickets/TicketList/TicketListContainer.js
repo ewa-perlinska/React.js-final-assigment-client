@@ -7,9 +7,9 @@ class TicketListContainer extends React.Component {
   componentDidMount() {
     this.props.loadTickets();
   }
-  componentDidUpdate() {
-    this.props.loadTickets();
-  }
+  // componentDidUpdate() {
+  //   this.props.loadTickets();
+  // }
   render() {
     return (
       <div>
