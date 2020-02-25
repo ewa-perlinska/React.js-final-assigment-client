@@ -64,6 +64,7 @@ export const createTicket = (image, price, description, eventId) => {
 
     const stateData = getState().auth.data;
     const token = stateData.token;
+    const eventId = getState().events.selectedEvent.id;
 
     const response = await axios({
       method: "POST",
@@ -73,7 +74,8 @@ export const createTicket = (image, price, description, eventId) => {
       data: {
         image,
         price,
-        description
+        description,
+        eventId
       }
     });
 

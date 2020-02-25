@@ -33,12 +33,11 @@ export function event(event) {
   };
 }
 
-export function selectEvent(eventId) {
+export function selectEvent(id) {
   return async function(dispatch, getState) {
     try {
-      const response = await axios.get(`${baseUrl}/event/${eventId}`);
-      // const { data } = response;
-      // const action = event(data);
+      const response = await axios.get(`${baseUrl}/event/${id}`);
+      console.log("do i have my response?", response);
       dispatch(event(response.data));
     } catch (error) {
       throw error;

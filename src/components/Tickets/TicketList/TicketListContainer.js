@@ -1,12 +1,12 @@
 import React from "react";
-import { loadTickets } from "../../../actions/tickets";
+import { loadOneEventTickets } from "../../../actions/tickets";
 import { connect } from "react-redux";
 import TicketsList from "./TicketList";
 import CreateTicketContainer from "../CreateTicketContainer";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    this.props.loadTickets();
+    this.props.loadOneEventTickets();
   }
   // componentDidUpdate() {
   //   this.props.loadTickets();
@@ -40,4 +40,6 @@ const mapStateToProps = state => ({
   event: state.events.selectedEvent
 });
 
-export default connect(mapStateToProps, { loadTickets })(TicketListContainer);
+export default connect(mapStateToProps, { loadOneEventTickets })(
+  TicketListContainer
+);
