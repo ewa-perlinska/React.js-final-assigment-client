@@ -34,7 +34,6 @@ class CreateTicketContainer extends Component {
           handleChange={this.handleChange}
         />
         <div>{this.props.createTicket}</div>
-        <TicketListContainer></TicketListContainer>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import EventsListContainer from "../Events/EventsList/EventsListContainer";
 
-function Home(props) {
+function Events(props) {
   return (
     <div>
       <EventsListContainer />
@@ -10,4 +10,4 @@ function Home(props) {
   );
 }
 
-export default connect()(Home);
+export default connect()(Events);

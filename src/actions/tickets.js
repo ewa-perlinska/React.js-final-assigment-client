@@ -25,6 +25,28 @@ export function loadTickets() {
   };
 }
 
+export const ONE_EVENT_TICKETS_FETCHED = "ONE_EVENT_TICKETS_FETCHED";
+
+export function ticketsOneEvent(tickets) {
+  return {
+    type: ONE_EVENT_TICKETS_FETCHED,
+    payload: tickets
+  };
+}
+
+export function loadOneEventTickets(id) {
+  return async function(dispatch, getState) {
+    try {
+      const response = await axios.get(`${baseUrl}/ticket/${id}`);
+      // const { data } = response;
+      // const action = event(data);
+      dispatch(ticketsOneEvent(response.data));
+    } catch (error) {
+      throw error;
+    }
+  };
+}
+
 export const TICKET_CREATE_SUCCESS = "TICKET_CREATE_SUCCESS";
 
 function createTicketSuccess(ticket) {
@@ -36,7 +58,7 @@ function createTicketSuccess(ticket) {
   };
 }
 
-export const createTicket = (image, price, description) => {
+export const createTicket = (image, price, description, eventId) => {
   return async function(dispatch, getState) {
     console.log("what is in my state?", getState());
 
@@ -45,7 +67,8 @@ export const createTicket = (image, price, description) => {
 
     const response = await axios({
       method: "POST",
-      url: "http://localhost:4000/ticket",
+      url: `http://localhost:4000/ticket/${eventId}`,
+      eventId,
       headers: { authorization: `Bearer ${token}` },
       data: {
         image,

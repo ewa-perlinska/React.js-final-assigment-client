@@ -24,6 +24,27 @@ export function loadEvents() {
     }
   };
 }
+export const ONE_EVENT_SELECTED = "ONE_EVENT_SELECTED";
+
+export function event(event) {
+  return {
+    type: ONE_EVENT_SELECTED,
+    payload: event
+  };
+}
+
+export function selectEvent(id) {
+  return async function(dispatch, getState) {
+    try {
+      const response = await axios.get(`${baseUrl}/event/${id}`);
+      // const { data } = response;
+      // const action = event(data);
+      dispatch(event(response.data));
+    } catch (error) {
+      throw error;
+    }
+  };
+}
 
 export const EVENT_CREATE_SUCCESS = "EVENT_CREATE_SUCCESS";
 

@@ -3,9 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SignupContainer from "./components/SignUp/SingupFormContainer";
 import LoginContainer from "./components/Login/LoginContainer";
-import Home from "./components/Home/index";
+import Events from "./components/Home/index";
 import EventFormContainer from "./components/Events/CreateEventContainer";
-import TicketFormContainer from "./components/Tickets/CreateTicketContainer";
+import TicketListConatiner from "./components/Tickets/CreateTicketContainer";
 
 function App() {
   return (
@@ -20,16 +20,19 @@ function App() {
           </Link>
           <Link to="/login">
             <li>Login!</li>
-            <Link to="/events/new">
+            <Link to="/event/new">
               <li>Create Event</li>
+            </Link>
+            <Link to="/event">
+              <li>Look at all events</li>
             </Link>
           </Link>
         </nav>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/event" component={Events} />
         <Route exact path="/signup" component={SignupContainer} />
         <Route exact path="/login" component={LoginContainer} />
-        <Route exact path="/events/new" component={EventFormContainer} />
-        <Route exact path="/ticket" component={TicketFormContainer} />
+        <Route exact path="/event/new" component={EventFormContainer} />
+        <Route exact path="/tickets" component={TicketListConatiner} />
       </Router>
     </div>
   );
