@@ -1,19 +1,22 @@
 import React from "react";
-import { loadEvents } from "../../../actions/events";
+import { loadEvents, selectEvent } from "../../../actions/events";
 import { connect } from "react-redux";
 import EventsList from "./EventsList";
-import { loadOneEventTickets } from "../../../actions/tickets";
 
 class EventsListContainer extends React.Component {
   componentDidMount() {
-    console.log("this.props.events?????", this.props.events);
+    console.log("WHAT IS MY EVENTS?", this.props.events);
+
     this.props.loadEvents();
   }
-
   onClick = async eventId => {
-    console.log("what is eventId", eventId);
     console.log("this button does something! and this is the id: ", this.props);
-    this.props.loadOneEventTickets(eventId);
+
+    try {
+      this.props.selectEvent(eventId);
+    } catch (error) {
+      console.warn("error test:", error);
+    }
   };
 
   render() {
@@ -46,6 +49,6 @@ const mapStateToProps = state => ({
   event: state.events.selectedEvent
 });
 
-export default connect(mapStateToProps, { loadEvents, loadOneEventTickets })(
+export default connect(mapStateToProps, { loadEvents, selectEvent })(
   EventsListContainer
 );

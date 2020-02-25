@@ -33,10 +33,10 @@ export function event(event) {
   };
 }
 
-export function selectEvent(id) {
+export function selectEvent(eventId) {
   return async function(dispatch, getState) {
     try {
-      const response = await axios.get(`${baseUrl}/event/${id}`);
+      const response = await axios.get(`${baseUrl}/event/${eventId}`);
       // const { data } = response;
       // const action = event(data);
       dispatch(event(response.data));
