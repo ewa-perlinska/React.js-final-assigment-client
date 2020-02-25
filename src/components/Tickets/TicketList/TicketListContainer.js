@@ -5,14 +5,14 @@ import TicketsList from "./TicketList";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    console.log("this.props.events?????", this.props.tickets);
+    console.log("this.props.tickets?????", this.props.tickets);
 
     this.props.loadTickets();
   }
   render() {
     return (
       <div>
-        {!this.props.events ? (
+        {!this.props.tickets ? (
           <div>Loading...</div>
         ) : (
           <div className="Searcher">
