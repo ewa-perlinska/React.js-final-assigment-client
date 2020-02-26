@@ -13,7 +13,13 @@ class EventsList extends Component {
             </button>{" "}
           </Link>
         </div>
-        <p>{this.props.image}</p>
+        <p>{this.props.imageUrl}</p>
+
+        <img
+          class="sealImage"
+          alt="Image of Seal"
+          src={this.props.imageUrl}
+        ></img>
         <p>{this.props.id}</p>
         <p>{this.props.date}</p>
         <p>{this.props.description}</p>

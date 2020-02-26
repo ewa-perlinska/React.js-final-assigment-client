@@ -6,7 +6,7 @@ import { createEvent } from "../../../actions/events";
 class CreateEventContainer extends Component {
   state = {
     title: "",
-    image: "",
+    imageUrl: "",
     date: "",
     description: ""
   };
@@ -22,12 +22,12 @@ class CreateEventContainer extends Component {
     this.props.dispatch(
       createEvent(
         this.state.title,
-        this.state.image,
+        this.state.imageUrl,
         this.state.date,
         this.state.description
       )
     );
-    this.setState({ title: "", image: "", date: "", description: "" });
+    this.setState({ title: "", imageUrl: "", date: "", description: "" });
   };
 
   render() {
