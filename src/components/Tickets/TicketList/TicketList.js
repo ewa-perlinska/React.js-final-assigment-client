@@ -3,20 +3,25 @@ import { Link } from "react-router-dom";
 
 class TicketsList extends Component {
   render() {
+    console.log("DOOOOO I HAVE MY PROPS", this.props);
     return (
       <div>
         <div>
-          <h2>Event: {this.props.title}</h2>
-          <Link to={`/event/${this.props.eventId}/ticket/${this.props.id}`}>
-            <button onClick={() => this.props.onClick(this.props.id)}>
-              Check ticket
-            </button>{" "}
-          </Link>
-        </div>
+          <h2> {this.props.title}</h2>
 
-        <p>{this.props.image}</p>
-        <p>{this.props.price}</p>
+          <img
+            class="Concert image"
+            alt="Concert image"
+            src={this.props.imageUrl}
+          ></img>
+        </div>
+        <p>{this.props.price} euro </p>
         <p>{this.props.description}</p>
+        <Link to={`/event/${this.props.eventId}/ticket/${this.props.id}`}>
+          <button onClick={() => this.props.onClick(this.props.id)}>
+            Check ticket
+          </button>{" "}
+        </Link>
       </div>
     );
   }

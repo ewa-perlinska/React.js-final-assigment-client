@@ -9,7 +9,7 @@ function CommentForm(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Comment: </label>
+      <label>LEAVE YOUR OWN COMMENT: </label>
       <input onChange={handleChange} name="comment" value={comment} />
       <input type="submit" />
     </form>

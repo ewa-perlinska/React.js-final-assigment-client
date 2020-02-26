@@ -44,7 +44,7 @@ function createTicketSuccess(ticket) {
   };
 }
 
-export const createTicket = (image, price, description, eventId) => {
+export const createTicket = (imageUrl, price, description, eventId) => {
   return async function(dispatch, getState) {
     console.log("what is in my state?", getState());
 
@@ -58,7 +58,7 @@ export const createTicket = (image, price, description, eventId) => {
       eventId,
       headers: { authorization: `Bearer ${token}` },
       data: {
-        image,
+        imageUrl,
         price,
         description,
         eventId

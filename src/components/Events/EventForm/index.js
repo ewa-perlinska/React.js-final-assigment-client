@@ -20,7 +20,7 @@ function EventForm(props) {
         onChange={handleChange}
         name="date"
         type="date"
-        min={"2020-02-12"}
+        min={"2020-02-28"}
         value={date}
       />
       <label>Description</label>

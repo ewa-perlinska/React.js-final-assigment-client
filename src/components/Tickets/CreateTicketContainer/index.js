@@ -5,7 +5,7 @@ import { createTicket } from "../../../actions/tickets";
 
 class CreateTicketContainer extends Component {
   state = {
-    image: "",
+    imageUrl: "",
     price: "",
     description: "",
     eventId: ""
@@ -22,13 +22,13 @@ class CreateTicketContainer extends Component {
 
     this.props.dispatch(
       createTicket(
-        this.state.image,
+        this.state.imageUrl,
         this.state.price,
         this.state.description,
         this.props.event.id
       )
     );
-    this.setState({ image: "", price: "", description: "", eventId: "" });
+    this.setState({ imageUrl: "", price: "", description: "", eventId: "" });
   };
 
   render() {

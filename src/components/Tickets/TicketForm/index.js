@@ -4,19 +4,22 @@ function TicketForm(props) {
   const {
     handleChange,
     handleSubmit,
-    values: { image, price, description, eventId }
+    values: { imageUrl, price, description, eventId }
   } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Image</label>
-      <input onChange={handleChange} name="image" value={image} />
-      <label>Price</label>
-      <input onChange={handleChange} name="price" value={price} />
-      <label>Description</label>
-      <input onChange={handleChange} name="description" value={description} />
-      <input type="submit" />
-    </form>
+    <div>
+      <h1>CREATE TICKET FOR THIS CONCERT</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Image</label>
+        <input onChange={handleChange} name="imageUrl" value={imageUrl} />
+        <label>Price</label>
+        <input onChange={handleChange} name="price" value={price} />
+        <label>Description</label>
+        <input onChange={handleChange} name="description" value={description} />
+        <input type="submit" />
+      </form>
+    </div>
   );
 }
 

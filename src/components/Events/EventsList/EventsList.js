@@ -6,23 +6,20 @@ class EventsList extends Component {
     return (
       <div>
         <div>
-          <h2>Event: {this.props.title}</h2>
-          <Link to={`/event/${this.props.id}/tickets/`}>
-            <button onClick={() => this.props.onClick(this.props.id)}>
-              Check tickets for that event
-            </button>{" "}
-          </Link>
+          <h2>{this.props.title}</h2>
         </div>
-        <p>{this.props.imageUrl}</p>
-
         <img
-          class="sealImage"
-          alt="Image of Seal"
+          class="Concert image"
+          alt="Concert image"
           src={this.props.imageUrl}
         ></img>
-        <p>{this.props.id}</p>
         <p>{this.props.date}</p>
         <p>{this.props.description}</p>
+        <Link to={`/event/${this.props.id}/tickets/`}>
+          <button onClick={() => this.props.onClick(this.props.id)}>
+            ~ CHECK TICKETS ~
+          </button>{" "}
+        </Link>
       </div>
     );
   }

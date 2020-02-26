@@ -13,7 +13,7 @@ class TicketDetailContainer extends Component {
   }
 
   render() {
-    const image = this.props.ticket.image;
+    const imageUrl = this.props.ticket.imageUrl;
     const price = this.props.ticket.price;
     const description = this.props.ticket.description;
 
@@ -21,11 +21,17 @@ class TicketDetailContainer extends Component {
 
     return (
       <div>
-        <p>{image}</p>
-        <p>{price}</p>
-        <p>{description}</p>
+        <div>
+          <h1>TICKET FROM </h1>
+
+          <img class="Concert image" alt="Concert image" src={imageUrl}></img>
+        </div>
+        <p>price of ticket :{price} euro </p>
+
+        <p>description of ticket :{description}</p>
+        <h3>COMMENTS :</h3>
         <CreateCommentContainer />
-        <p>Comments:</p>
+
         {this.props.comments.map(comment => (
           <Comment comment={comment.comment} userId={comment.id} />
         ))}
