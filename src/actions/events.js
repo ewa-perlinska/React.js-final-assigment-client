@@ -56,7 +56,7 @@ function createEventSuccess(event) {
   };
 }
 
-export const createEvent = (title, image, date, description) => {
+export const createEvent = (title, imageUrl, date, description) => {
   return async function(dispatch, getState) {
     const stateData = getState().auth.data;
     const token = stateData.token;
@@ -67,7 +67,7 @@ export const createEvent = (title, image, date, description) => {
       headers: { authorization: `Bearer ${token}` },
       data: {
         title,
-        image,
+        imageUrl,
         date,
         description
       }

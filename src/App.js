@@ -6,6 +6,8 @@ import LoginContainer from "./components/Login/LoginContainer";
 import EventsListContainer from "./components/Events/EventsList/EventsListContainer";
 import EventFormContainer from "./components/Events/CreateEventContainer";
 import Tickets from "./components/Tickets/render/index";
+import TicketDetailsContainer from "./components/Tickets/TicketDetails/TicketDetailsContainer";
+
 function App() {
   return (
     <div className="App">
@@ -32,6 +34,11 @@ function App() {
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/event/new" component={EventFormContainer} />
         <Route exact path="/event/:id/tickets" component={Tickets} />
+        <Route
+          exact
+          path="/event/:id/ticket/:id"
+          component={TicketDetailsContainer}
+        />
       </Router>
     </div>
   );

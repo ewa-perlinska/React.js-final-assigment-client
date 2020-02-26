@@ -1,5 +1,5 @@
 import React from "react";
-import { loadTickets } from "../../../actions/tickets";
+import { loadTickets, selectTicket } from "../../../actions/tickets";
 import { connect } from "react-redux";
 import TicketsList from "./TicketList";
 
@@ -11,6 +11,18 @@ class TicketListContainer extends React.Component {
 
     this.props.loadTickets(eventId);
   }
+
+  onClick = async ticketId => {
+    console.log("this button does something! and this is the id: ", this.props);
+
+    try {
+      this.props.selectTicket(ticketId);
+      console.log("do i have my ticket id ?", ticketId);
+    } catch (error) {
+      console.warn("error test:", error);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -18,12 +30,16 @@ class TicketListContainer extends React.Component {
           <div>Loading...</div>
         ) : (
           <div className="Searcher">
+            <p>Events name :{this.props.event.title}</p>
             {this.props.tickets.map(ticket => (
               <TicketsList
+                id={ticket.id}
                 key={ticket.id}
                 imageUrl={ticket.imageUrl}
                 price={ticket.price}
                 description={ticket.description}
+                eventId={this.props.event.id}
+                onClick={this.onClick}
               />
             ))}
           </div>
@@ -39,4 +55,6 @@ const mapStateToProps = state => ({
   event: state.events.selectedEvent
 });
 
-export default connect(mapStateToProps, { loadTickets })(TicketListContainer);
+export default connect(mapStateToProps, { loadTickets, selectTicket })(
+  TicketListContainer
+);
