@@ -6,8 +6,13 @@ class Comment extends Component {
 
     return (
       <div>
-        <p>{this.props.comment}</p>
-        <p>{this.props.userId}</p>
+        <h3>
+          ~ Comment~
+          <p>
+            {" "}
+            {this.props.comment} <p>from : {this.props.username}</p>
+          </p>
+        </h3>
       </div>
     );
   }

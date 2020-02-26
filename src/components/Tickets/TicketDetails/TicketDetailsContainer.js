@@ -16,14 +16,12 @@ class TicketDetailContainer extends Component {
     const imageUrl = this.props.ticket.imageUrl;
     const price = this.props.ticket.price;
     const description = this.props.ticket.description;
-
-    console.log("COO TO JEST USER ID AUTH?", this.props.user);
-
+    // const userNameFromTicket = this.props.ticket.user.username;
     return (
       <div>
         <div>
+          {/* <h1>TICKET FROM{this.props.ticket.user.username} </h1> */}
           <h1>TICKET FROM </h1>
-
           <img class="Concert image" alt="Concert image" src={imageUrl}></img>
         </div>
         <p>price of ticket :{price} euro </p>
@@ -33,7 +31,11 @@ class TicketDetailContainer extends Component {
         <CreateCommentContainer />
 
         {this.props.comments.map(comment => (
-          <Comment comment={comment.comment} userId={comment.id} />
+          <Comment
+            comment={comment.comment}
+            userId={comment.id}
+            username={comment.user.username}
+          />
         ))}
       </div>
     );
