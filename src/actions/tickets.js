@@ -15,7 +15,10 @@ export function loadTickets(eventId) {
   console.log("is this running ?");
   return async function(dispatch, getState) {
     try {
-      console.log("do i have my event id", getState().events.selectedEvent);
+      console.log(
+        "O CO CHODZI ???? ,do i have my event id",
+        getState().events.selectedEvent
+      );
       const eventId = getState().events.selectedEvent.id;
       console.log("do i have my event id????", eventId);
       const response = await axios.get(`${baseUrl}/event/${eventId}/ticket`);
@@ -51,7 +54,7 @@ export const createTicket = (image, price, description, eventId) => {
 
     const response = await axios({
       method: "POST",
-      url: `http://localhost:4000/ticket/${eventId}`,
+      url: `http://localhost:4000/event/${eventId}/ticket`,
       eventId,
       headers: { authorization: `Bearer ${token}` },
       data: {

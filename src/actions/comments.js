@@ -21,14 +21,19 @@ export const createComment = (comment, eventId) => {
     const token = stateData.token;
     const eventId = getState().events.selectedEvent.id;
     console.log("what is my ticket id?", getState().tickets.selectedTicket.id);
+    console.log("DO I HAVE MY EVENT ID?", getState().events.selectedEvent.id);
     const ticketId = getState().tickets.selectedTicket.id;
+    console.log("do i have my ticket id ??????", ticketId);
     const response = await axios({
       method: "POST",
-      url: `http://localhost:4000/ticket/${ticketId}/comment`,
+      url: `http://localhost:4000/event/${eventId}/ticket/${ticketId}/comment`,
+      ticketId,
       eventId,
       headers: { authorization: `Bearer ${token}` },
       data: {
-        comment
+        comment,
+        ticketId,
+        eventId
       }
     });
 

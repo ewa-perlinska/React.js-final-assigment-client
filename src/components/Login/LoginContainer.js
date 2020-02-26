@@ -30,16 +30,16 @@ class LoginContainer extends Component {
   render() {
     return (
       <div>
-        {this.props.userLoggedIn ? (
+        {/* {this.props.userLoggedIn ? (
           <h1>You are logged in</h1>
-        ) : (
-          <LoginForm
-            text="Login"
-            values={this.state}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        )}
+        ) : ( */}
+        <LoginForm
+          text="Login"
+          values={this.state}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        {/* )} */}
       </div>
     );
   }
