@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CreateCommentContainer from "../../Comments/CreateCommentContainer";
+import { loadComments } from "../../../actions/comments";
 
 class TicketDetailContainer extends Component {
   componentDidMount() {
-    console.log("what ia my this.props.ticket", this.props.ticket);
+    console.log("CONSOLO JAKIE JA MAM PROPSY?", this.props);
+    const ticketId = this.props.ticket.id;
+    this.props.loadComments(ticketId);
   }
 
   render() {
@@ -33,4 +36,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(TicketDetailContainer);
+export default connect(mapStateToProps, { loadComments })(
+  TicketDetailContainer
+);

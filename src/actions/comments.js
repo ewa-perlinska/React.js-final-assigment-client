@@ -41,3 +41,39 @@ export const createComment = (comment, eventId) => {
     dispatch(createCommentSuccess(response.data));
   };
 };
+
+export const COMMENTS_FETCHED = "COMMENTS_FETCHED";
+
+export function comments(comments) {
+  return {
+    type: COMMENTS_FETCHED,
+    payload: comments
+  };
+}
+
+export function loadComments(ticketId) {
+  console.log("is this running ?");
+  return async function(dispatch, getState) {
+    try {
+      console.log(
+        "O CO CHODZI ???? ,do i have my event id",
+        getState().events.selectedEvent
+      );
+      const eventId = getState().events.selectedEvent.id;
+      const ticketId = getState().tickets.selectedTicket.id;
+
+      console.log("CONSOLOS do i have my event id????", eventId);
+      console.log("CONSOLOS do i have my TICKET id????", ticketId);
+      const response = await axios.get(
+        `${baseUrl}/event/${eventId}/ticket/${ticketId}/comment`
+      );
+      const { data } = response;
+      console.log("what is my response here FROM COMMENTS?", response);
+
+      const action = comments(data);
+      dispatch(action);
+    } catch (error) {
+      throw error;
+    }
+  };
+}
