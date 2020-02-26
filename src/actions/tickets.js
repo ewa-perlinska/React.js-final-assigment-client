@@ -18,7 +18,7 @@ export function loadTickets(eventId) {
       console.log("do i have my event id", getState().events.selectedEvent);
       const eventId = getState().events.selectedEvent.id;
       console.log("do i have my event id????", eventId);
-      const response = await axios.get(`${baseUrl}/events/${eventId}/ticket`);
+      const response = await axios.get(`${baseUrl}/event/${eventId}/ticket`);
       const { data } = response;
       console.log("what is my response here?", response);
 
@@ -67,24 +67,29 @@ export const createTicket = (image, price, description, eventId) => {
   };
 };
 
-//export const ONE_EVENT_TICKETS_FETCHED = "ONE_EVENT_TICKETS_FETCHED";
+export const ONE_TICKET_SELECTED = "ONE_TICKET_SELECTED";
 
-// export function ticketsOneEvent(tickets) {
-//   return {
-//     type: ONE_EVENT_TICKETS_FETCHED,
-//     payload: tickets
-//   };
-// }
+export function ticket(ticket) {
+  return {
+    type: ONE_TICKET_SELECTED,
+    payload: ticket
+  };
+}
 
-// export function loadOneEventTickets() {
-//   return async function(dispatch, getState) {
-//     try {
-//       const response = await axios.get(`${baseUrl}/ticket`);
-//       // const { data } = response;
-//       // const action = event(data);
-//       dispatch(ticketsOneEvent(response.data));
-//     } catch (error) {
-//       throw error;
-//     }
-//   };
-// }
+export function selectTicket(ticketId) {
+  return async function(dispatch, getState) {
+    try {
+      console.log("DO I HAVE MY TICKET ID ??????????????", ticketId);
+      const eventId = getState().events.selectedEvent.id;
+      console.log("boze do i have event ID??????", eventId);
+      const response = await axios.get(
+        `${baseUrl}/event/${eventId}/ticket/${ticketId}`
+      );
+      console.log("DO I HAVE MY TICKET ID ??????????????", ticketId);
+      console.log("do i have my response??????????????", response);
+      dispatch(ticket(response.data));
+    } catch (error) {
+      throw error;
+    }
+  };
+}

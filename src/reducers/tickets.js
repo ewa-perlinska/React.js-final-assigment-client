@@ -1,4 +1,8 @@
-import { TICKET_CREATE_SUCCESS, TICKETS_FETCHED } from "../actions/tickets";
+import {
+  TICKET_CREATE_SUCCESS,
+  TICKETS_FETCHED,
+  ONE_TICKET_SELECTED
+} from "../actions/tickets";
 
 const initialState = {
   allTickets: [],
@@ -18,6 +22,11 @@ export default function(state = initialState, action) {
         ...state,
         allTickets: [...state.allTickets, action.payload],
         createTicket: action.payload
+      };
+    case ONE_TICKET_SELECTED:
+      return {
+        ...state,
+        selectedTicket: action.payload
       };
     default:
       return state;
