@@ -13,12 +13,30 @@ class TicketDetailContainer extends Component {
     console.log("co to jest auth", this.props.auth);
     this.props.loadRisk();
   }
+
   calculateRiskForComments() {
     const commentsAmount = this.props.comments.length;
     if (commentsAmount < 3) {
       return 0;
     } else {
       return 5;
+    }
+  }
+
+  calculateRiskForPrice() {
+    const sumPrice = this.props.tickets.map(ticket => ticket.price);
+    const totalPrice = sumPrice.reduce((accumulator, element) => {
+      return accumulator + element;
+    }, 0);
+    const ticketsNumber = this.props.tickets.length;
+    const averagePrice = totalPrice / ticketsNumber;
+    const ticketPrice = this.props.ticket.price;
+    const risk = -1 * ((100 * ticketPrice) / averagePrice - 100);
+
+    if (risk > -10) {
+      return risk;
+    } else {
+      return -10;
     }
   }
 
@@ -59,7 +77,8 @@ const mapStateToProps = state => {
     events: state.events.allEvents,
     event: state.events.selectedEvent,
     ticket: state.tickets.selectedTicket,
-    comments: state.comments.selectedCommentsForOneTicket
+    comments: state.comments.selectedCommentsForOneTicket,
+    tickets: state.tickets.allTickets
   };
 };
 
