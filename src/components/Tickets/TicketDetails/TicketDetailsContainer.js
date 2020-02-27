@@ -22,10 +22,10 @@ class TicketDetailContainer extends Component {
 
   calculateRiskForComments() {
     const commentsAmount = this.props.comments.length;
-    if (commentsAmount < 3) {
-      return 0;
-    } else {
+    if (commentsAmount > 3) {
       return 5;
+    } else {
+      return 0;
     }
   }
 
@@ -57,6 +57,22 @@ class TicketDetailContainer extends Component {
     }
   }
 
+  calculateRisk() {
+    const riskNumber =
+      this.calculateRiskForComments() +
+      this.calculateRiskForPrice() +
+      this.calculateRiskforTime();
+    const riskNumbertotal = Number.parseFloat(riskNumber).toFixed(0);
+
+    if (riskNumbertotal < 95 && riskNumbertotal > 5) {
+      return riskNumbertotal;
+    } else if (riskNumbertotal < 5) {
+      return 5;
+    } else {
+      return 95;
+    }
+  }
+
   render() {
     const imageUrl = this.props.ticket.imageUrl;
     const price = this.props.ticket.price;
@@ -70,7 +86,10 @@ class TicketDetailContainer extends Component {
           <img class="Concert image" alt="Concert image" src={imageUrl}></img>
         </div>
         <p>price of ticket :{price} euro </p>
-        <p>We calculated that the risk of this ticket being a fraud is XX%</p>
+        <p>
+          We calculated that the risk of this ticket being a fraud is{" "}
+          {this.calculateRisk()} %
+        </p>
         <p>description of ticket :{description}</p>
         <h3>COMMENTS :</h3>
         <CreateCommentContainer />
