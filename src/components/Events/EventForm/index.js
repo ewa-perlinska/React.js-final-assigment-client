@@ -7,7 +7,7 @@ function EventForm(props) {
     values: { title, imageUrl, date, description }
   } = props;
 
-  console.log("whaaaat are my values?", props);
+  // console.log("whaaaat are my values?", props);
 
   return (
     <form onSubmit={handleSubmit}>

@@ -34,12 +34,15 @@ class CreateTicketContainer extends Component {
   render() {
     return (
       <div>
-        <TicketForm
-          values={this.state}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
-        <div>{this.props.createTicket}</div>
+        <h1>CREATE TICKET FOR THIS CONCERT</h1>
+        <div>
+          <TicketForm
+            values={this.state}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+          />
+          <div>{this.props.createTicket}</div>
+        </div>
       </div>
     );
   }

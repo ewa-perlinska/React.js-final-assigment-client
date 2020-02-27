@@ -5,7 +5,7 @@ import SignupContainer from "./components/SignUp/SingupFormContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import EventsListContainer from "./components/Events/EventsList/EventsListContainer";
 import EventFormContainer from "./components/Events/CreateEventContainer";
-import Tickets from "./components/Tickets/render/index";
+import Tickets from "./components/Tickets/TicketRender/index";
 import TicketDetailsContainer from "./components/Tickets/TicketDetails/TicketDetailsContainer";
 
 function App() {

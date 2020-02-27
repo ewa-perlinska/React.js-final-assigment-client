@@ -96,3 +96,29 @@ export function selectTicket(ticketId) {
     }
   };
 }
+
+export const TICKET_UPDATE_SUCCESS = "TICKET_UPDATE_SUCCESS";
+
+export function ticketUpdateSuccess(ticket) {
+  return {
+    type: TICKET_UPDATE_SUCCESS,
+    payload: ticket
+  };
+}
+
+export function updateTicket(ticketId, formValues) {
+  return async function(dispatch, getState) {
+    try {
+      const eventId = getState().events.selectedEvent.id;
+      const response = await axios.patch(
+        `${baseUrl}/event/${eventId}/ticket/${ticketId}`,
+        formValues
+      );
+      dispatch(ticketUpdateSuccess(response.data));
+
+      console.log("what is my ?", response.data);
+    } catch (error) {
+      throw error;
+    }
+  };
+}

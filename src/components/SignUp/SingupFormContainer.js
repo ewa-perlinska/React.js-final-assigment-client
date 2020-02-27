@@ -26,7 +26,7 @@ class SignupFormContainer extends Component {
   render() {
     return (
       <div>
-        {this.props.userCreated ? <h1>Account created</h1> : null}
+        {/* {this.props.userCreated ? <h1>Account created</h1> : null} */}
         <SignupForm
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}

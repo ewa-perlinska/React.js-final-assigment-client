@@ -7,7 +7,7 @@ class Comment extends Component {
     return (
       <div>
         <h3>
-          ~ Comment~
+          ~ Comment ~
           <p>
             {" "}
             {this.props.comment} <p>from : {this.props.username}</p>
