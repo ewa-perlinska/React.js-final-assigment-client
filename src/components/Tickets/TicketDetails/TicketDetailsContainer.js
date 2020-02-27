@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import CreateCommentContainer from "../../Comments/CreateCommentContainer";
 import { loadComments } from "../../../actions/comments";
 import Comment from "../TicketDetails/Comment";
-import { loadRisk } from "../../../actions/risk";
+import { loadTickets, selectTicket } from "../../../actions/tickets";
 
 class TicketDetailContainer extends Component {
   componentDidMount() {
@@ -11,7 +11,13 @@ class TicketDetailContainer extends Component {
     const ticketId = this.props.ticket.id;
     this.props.loadComments(ticketId);
     console.log("co to jest auth", this.props.auth);
-    this.props.loadRisk();
+    const time = this.props.ticket.createdAt;
+    const hour = time.substr(11, 2);
+    console.log("how time looks afer this method", hour);
+    console.log("what do i get as time", time);
+    // this.props.loadRisk();
+    this.props.loadTickets();
+    this.props.selectTicket(this.props.match.params.id);
   }
 
   calculateRiskForComments() {
@@ -37,6 +43,17 @@ class TicketDetailContainer extends Component {
       return risk;
     } else {
       return -10;
+    }
+  }
+
+  calculateRiskforTime() {
+    const time = this.props.ticket.createdAt;
+    const hour = time.substr(11, 2);
+    const hourNumber = parseInt(hour);
+    if (hourNumber > 9 && hourNumber < 17) {
+      return -10;
+    } else {
+      return 10;
     }
   }
 
@@ -82,6 +99,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { loadComments, loadRisk })(
-  TicketDetailContainer
-);
+export default connect(mapStateToProps, {
+  loadComments,
+  loadTickets,
+  selectTicket
+})(TicketDetailContainer);
