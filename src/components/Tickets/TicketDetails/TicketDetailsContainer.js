@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import CreateCommentContainer from "../../Comments/CreateCommentContainer";
 import { loadComments } from "../../../actions/comments";
 import Comment from "../TicketDetails/Comment";
+import { loadRisk } from "../../../actions/risk";
 
 class TicketDetailContainer extends Component {
   componentDidMount() {
@@ -10,6 +11,15 @@ class TicketDetailContainer extends Component {
     const ticketId = this.props.ticket.id;
     this.props.loadComments(ticketId);
     console.log("co to jest auth", this.props.auth);
+    this.props.loadRisk();
+  }
+  calculateRiskForComments() {
+    const commentsAmount = this.props.comments.length;
+    if (commentsAmount < 3) {
+      return 0;
+    } else {
+      return 5;
+    }
   }
 
   render() {
@@ -25,7 +35,7 @@ class TicketDetailContainer extends Component {
           <img class="Concert image" alt="Concert image" src={imageUrl}></img>
         </div>
         <p>price of ticket :{price} euro </p>
-
+        <p>We calculated that the risk of this ticket being a fraud is XX%</p>
         <p>description of ticket :{description}</p>
         <h3>COMMENTS :</h3>
         <CreateCommentContainer />
@@ -53,6 +63,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { loadComments })(
+export default connect(mapStateToProps, { loadComments, loadRisk })(
   TicketDetailContainer
 );
