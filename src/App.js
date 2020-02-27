@@ -13,19 +13,16 @@ function App() {
     <div className="App">
       <Router>
         <nav>
-          <Link to="/">
-            <li>HOME</li>
+          <Link to="/event">
+            <li>~ HOME PAGE ~ LOOK AT ALL EVENTS</li>
           </Link>
           <Link to="/signup">
-            <li>Sign up!</li>
+            <li>~ SIGN UP ~ </li>
           </Link>
           <Link to="/login">
-            <li>Login!</li>
+            <li>~ LOGIN ~</li>
             <Link to="/event/new">
-              <li>Create Event</li>
-            </Link>
-            <Link to="/event">
-              <li>Look at all events</li>
+              <li>~ CREATE EVENT ~ </li>
             </Link>
           </Link>
         </nav>
