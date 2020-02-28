@@ -9,9 +9,19 @@ import {
 } from "../../../actions/tickets";
 
 class TicketUpdateContainer extends React.Component {
+  componentDidMount() {
+    const eventId = this.props.event.id;
+
+    this.props.loadTickets(eventId);
+  }
+  // componentDidUpdate() {
+  //   const eventId = this.props.event.id;
+
+  //   this.props.loadTickets(eventId);
+  // }
+
   state = {
     editMode: false,
-    // currentId: Number(this.props.match.params.id),
     formValues: {
       imageUrl: "",
       price: "",
@@ -35,12 +45,12 @@ class TicketUpdateContainer extends React.Component {
     this.setState({
       editMode: true,
       formValues: {
-        imageUrl: this.props.ticket.imageUrl,
-        price: this.props.ticket.price,
-        description: this.props.ticket.description
+        imageUrl: "",
+        price: "",
+        description: ""
       }
     });
-    this.props.selectTicket();
+    // this.props.disptach(selectTicket(this.props.ticket.id));
   };
 
   onChange = event => {

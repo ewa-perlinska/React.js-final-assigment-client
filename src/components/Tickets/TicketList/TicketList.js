@@ -35,6 +35,7 @@ class TicketsList extends Component {
           onClick={() => {
             this.props.onEdit();
             this.props.onClick(this.props.id);
+            console.log("does this function gets fired??????????????");
           }}
         >
           {" "}

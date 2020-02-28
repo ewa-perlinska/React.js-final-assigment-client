@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import TicketForm from "../TicketForm";
 import { connect } from "react-redux";
-import { createTicket } from "../../../actions/tickets";
+import { createTicket, loadTickets } from "../../../actions/tickets";
 
 class CreateTicketContainer extends Component {
+  componentDidMount() {
+    const eventId = this.props.event.id;
+
+    this.props.loadTickets(eventId);
+  }
+  // componentDidUpdate() {
+  //   const eventId = this.props.event.id;
+
+  //   this.props.loadTickets(eventId);
+  // }
   state = {
     imageUrl: "",
     price: "",
@@ -57,4 +67,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(CreateTicketContainer);
+export default connect(mapStateToProps, { loadTickets, createTicket })(
+  CreateTicketContainer
+);

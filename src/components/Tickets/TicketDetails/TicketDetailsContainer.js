@@ -7,18 +7,22 @@ import { loadTickets, selectTicket } from "../../../actions/tickets";
 
 class TicketDetailContainer extends Component {
   componentDidMount() {
-    console.log("CONSOLO JAKIE JA MAM PROPSY?", this.props);
     const ticketId = this.props.ticket.id;
     this.props.loadComments(ticketId);
     console.log("co to jest auth", this.props.auth);
-    const time = this.props.ticket.createdAt;
-    const hour = time.substr(11, 2);
-    console.log("how time looks afer this method", hour);
-    console.log("what do i get as time", time);
+
     // this.props.loadRisk();
     this.props.loadTickets();
     this.props.selectTicket(this.props.match.params.id);
   }
+
+  // componentDidUpdate() {
+  //   const ticketId = this.props.ticket.id;
+  //   this.props.loadComments(ticketId);
+
+  //   this.props.loadTickets(ticketId);
+  //   this.props.selectTicket(this.props.match.params.id);
+  // }
 
   calculateRiskForComments() {
     const commentsAmount = this.props.comments.length;
