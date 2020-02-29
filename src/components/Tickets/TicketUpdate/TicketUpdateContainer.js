@@ -67,7 +67,10 @@ class TicketUpdateContainer extends React.Component {
     event.preventDefault();
     this.props.updateTicket(this.props.event.id, this.state.formValues);
     this.setState({
-      editMode: false
+      editMode: false,
+      formValues: {
+        [event.target.name]: event.target.value
+      }
     });
   };
 
@@ -130,15 +133,3 @@ export default connect(mapStateToProps, {
   loadTickets,
   selectTicket
 })(TicketUpdateContainer);
-
-// {this.state.editMode === true && (
-//   <div>
-//     Edit event:
-//     <TicketForm
-//       ticket={this.props.ticket}
-//       onSubmit={this.onSubmit}
-//       onChange={this.onChange}
-//       values={this.state.formValues}
-//     />
-//   </div>
-// )}

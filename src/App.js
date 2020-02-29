@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SignupContainer from "./components/SignUp/SingupFormContainer";
 import LoginContainer from "./components/Login/LoginContainer";
-import EventsListContainer from "./components/Events/EventsList/EventsListContainer";
+import EventsList from "./components/Events/EventsList/EventsList";
 import EventFormContainer from "./components/Events/CreateEventContainer";
 import Tickets from "./components/Tickets/TicketRender/index";
 import TicketDetailsContainer from "./components/Tickets/TicketDetails/TicketDetailsContainer";
@@ -26,7 +26,7 @@ function App() {
             </Link>
           </Link>
         </nav>
-        <Route exact path="/event" component={EventsListContainer} />
+        <Route exact path="/event" component={EventsList} />
         <Route exact path="/signup" component={SignupContainer} />
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/event/new" component={EventFormContainer} />

@@ -12,11 +12,11 @@ class Tickets extends Component {
 
     this.props.loadTickets(eventId);
   }
-  componentDidUpdate() {
-    const eventId = this.props.event.id;
+  // componentDidUpdate() {
+  //   const eventId = this.props.event.id;
 
-    this.props.loadTickets(eventId);
-  }
+  //   this.props.loadTickets(eventId);
+  // }
   render() {
     return (
       <div>

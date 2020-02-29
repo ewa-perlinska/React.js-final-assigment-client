@@ -20,7 +20,7 @@ class TicketListContainer extends React.Component {
 
     try {
       this.props.selectTicket(ticketId);
-      // console.log("do i have my ticket id ?", ticketId);
+      console.log("do i have my ticket id ?", ticketId);
     } catch (error) {
       // console.warn("error test:", error);
     }

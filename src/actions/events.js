@@ -58,8 +58,10 @@ function createEventSuccess(event) {
 
 export const createEvent = (title, imageUrl, date, description) => {
   return async function(dispatch, getState) {
+    console.log("what is in my state?", getState());
     const stateData = getState().auth.data;
     const token = stateData.token;
+    console.log(token);
 
     const response = await axios({
       method: "POST",

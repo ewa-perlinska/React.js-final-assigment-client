@@ -30,13 +30,11 @@ class CreateTicketContainer extends Component {
 
     console.log("what is my state here?????", this.state);
 
-    this.props.dispatch(
-      createTicket(
-        this.state.imageUrl,
-        this.state.price,
-        this.state.description,
-        this.props.event.id
-      )
+    this.props.createTicket(
+      this.state.imageUrl,
+      this.state.price,
+      this.state.description,
+      this.props.event.id
     );
     this.setState({ imageUrl: "", price: "", description: "", eventId: "" });
   };
