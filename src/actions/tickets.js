@@ -15,13 +15,9 @@ export function loadTickets(eventId) {
   console.log("is this running ?");
   return async function(dispatch, getState) {
     try {
-      // console.log(
-      //   "DOOOO I HAVE MY TICKET ID? SELECTED EVENT??????",
-      //   getState().events.selectedEvent
-      // );
-      // const eventId = getState().events.selectedEvent.id;
       console.log("do i have my event id????", eventId);
-      const response = await axios.get(`${baseUrl}/event/${eventId}/ticket`);
+
+      const response = await axios.get(`${baseUrl}/event/${eventId}`);
       const { data } = response;
       console.log("what is my response here?", response);
 

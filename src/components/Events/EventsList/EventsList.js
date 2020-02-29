@@ -31,10 +31,11 @@ class EventsList extends React.Component {
                 <h2>~{event.title}~</h2>
                 <img src={event.imageUrl} alt="event image"></img>
                 <p>{event.description}</p>
-                <Link to={`/event/${event.id}/tickets/`}>
-                  <button onClick={() => this.onClick(event.id)}>
+                <Link to={`/event/${event.id}`}>
+                  link{" "}
+                  {/* <button onClick={() => this.onClick(event.id)}>
                     ~ CHECK TICKETS ~
-                  </button>{" "}
+                  </button>{" "} */}
                 </Link>
               </div>
             ))}

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import TicketForm from "../TicketForm/index";
 import { loadTickets } from "../../../actions/tickets";
-// import { loadTickets, updateTicket } from "../../../actions/tickets";
+
 import { connect } from "react-redux";
 
 class TicketsList extends Component {
@@ -60,29 +59,29 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, { loadTickets })(TicketsList);
 
-// {this.props.mode === true && (
+// // {this.props.mode === true && (
+// //   <div>
+// //     EDIT EVENT
+// //     <TicketForm
+// //       ticket={this.props.ticket}
+// //       onSubmit={this.onSubmit}
+// //       onChange={this.onChange}
+// //       values={this.state.formValues}
+// //     />
+// //   </div>
+// // )}
+// // </div>
+
+// {
+//   /* <button onClick={this.onEdit}>~ EDIT TICKET ~</button>
+// {this.state.editMode === true && (
 //   <div>
-//     EDIT EVENT
+//     ~ EDIT TICKET ~
 //     <TicketForm
-//       ticket={this.props.ticket}
-//       onSubmit={this.onSubmit}
-//       onChange={this.onChange}
-//       values={this.state.formValues}
+//       values={this.state}
+//       handleSubmit={this.handleSubmit}
+//       handleChange={this.handleChange}
 //     />
 //   </div>
-// )}
-// </div>
-
-{
-  /* <button onClick={this.onEdit}>~ EDIT TICKET ~</button>
-{this.state.editMode === true && (
-  <div>
-    ~ EDIT TICKET ~
-    <TicketForm
-      values={this.state}
-      handleSubmit={this.handleSubmit}
-      handleChange={this.handleChange}
-    />
-  </div>
-)} */
-}
+// )} */
+// }

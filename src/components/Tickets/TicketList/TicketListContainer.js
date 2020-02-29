@@ -1,19 +1,13 @@
 import React from "react";
 import { loadTickets, selectTicket } from "../../../actions/tickets";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import TicketsList from "./TicketList";
-import TicketUpdateContainer from "../TicketUpdate/TicketUpdateContainer";
 
 class TicketListContainer extends React.Component {
-  // componentDidMount() {
-  //   // console.log("JAKIE JA MAM PROPY?", this.props.event);
-  //   const eventId = this.props.event.id;
-  //   console.log("do i have event id in ticket component?", eventId);
-  //   // console.log("JAKIE JA MAM PROPSY ???????????", this.props.tickets);
-  //   this.props.loadTickets(eventId);
-  //   // const ticket = this.props.tickets.map(ticket => ticket);
-  //   // console.log("co to jest ticket here????");
-  // }
+  componentDidMount() {
+    this.props.loadTickets(this.props.match.params.id);
+  }
 
   onClick = async ticketId => {
     // console.log("this button does something! and this is the id: ", this.props);
@@ -27,8 +21,11 @@ class TicketListContainer extends React.Component {
   };
 
   render() {
+    const eventId = this.props.match.params;
     return (
       <div>
+        {" "}
+        <h1>hello{this.props.match.params.id}</h1>
         {!this.props.tickets ? (
           <div>Loading...</div>
         ) : (
@@ -77,3 +74,44 @@ export default connect(mapStateToProps, {
 //   });
 //   console.log("what is this props name", this.props.event.name);
 // };
+
+// <button
+// onClick={() => {
+//   this.props.onEdit();
+//   this.props.onClick(this.props.id);
+//   console.log("does this function gets fired??????????????");
+// }}
+// >
+
+// (
+//   <div>
+//     {!this.props.tickets ? (
+//       <div>Loading...</div>
+//     ) : (
+//       <div className="Searcher">
+//         <h1> 🎼 TICKETS FOR THIS CONCERT</h1>
+//         <h3>HELLOOOOO ID {this.props.match.params}</h3>
+//         <h2>~ EVENT NAME ~ {this.props.event.title} ~</h2>
+//         <div>
+//           {tickets.map(ticket => (
+//             <div key={ticket.id}>
+//               <img src={ticket.imageUrl}></img>
+//               <p>{ticket.price} euro</p>
+//               <p>{ticket.description}</p>
+//               <Link
+//                 to={`/event/${this.props.match.params.id}/tickets/${ticket.id}`}
+//               >
+//                 <button onClick={() => this.onClick(ticket.id)}>
+//                   ~ CHECK TICKET DETAILS ~
+//                 </button>{" "}
+//               </Link>
+//               <button> ~ EDIT TICKET DETAILS ~</button>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     )}
+//   </div>
+// );
+// }
+// }

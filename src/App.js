@@ -5,8 +5,8 @@ import SignupContainer from "./components/SignUp/SingupFormContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import EventsList from "./components/Events/EventsList/EventsList";
 import EventFormContainer from "./components/Events/CreateEventContainer";
-import Tickets from "./components/Tickets/TicketRender/index";
 import TicketDetailsContainer from "./components/Tickets/TicketDetails/TicketDetailsContainer";
+import TicketListContainer from "./components/Tickets/TicketList/TicketListContainer";
 
 function App() {
   return (
@@ -30,10 +30,10 @@ function App() {
         <Route exact path="/signup" component={SignupContainer} />
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/event/new" component={EventFormContainer} />
-        <Route exact path="/event/:id/tickets" component={Tickets} />
+        <Route exact path="/event/:id" component={TicketListContainer} />
         <Route
           exact
-          path="/event/:id/ticket/:id"
+          path="/event/:id/tickets/:id"
           component={TicketDetailsContainer}
         />
       </Router>

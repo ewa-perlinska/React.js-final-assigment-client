@@ -14,11 +14,6 @@ class TicketUpdateContainer extends React.Component {
 
     this.props.loadTickets(eventId);
   }
-  // componentDidUpdate() {
-  //   const eventId = this.props.event.id;
-
-  //   this.props.loadTickets(eventId);
-  // }
 
   state = {
     editMode: false,
