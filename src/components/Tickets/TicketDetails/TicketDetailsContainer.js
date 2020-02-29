@@ -7,17 +7,16 @@ import { loadTickets, selectTicket } from "../../../actions/tickets";
 
 class TicketDetailContainer extends Component {
   componentDidMount() {
-    console.log("CONSOLO JAKIE JA MAM PROPSY?", this.props);
-    const ticketId = this.props.ticket.id;
-    this.props.loadComments(ticketId);
-    console.log("co to jest auth", this.props.auth);
-    const time = this.props.ticket.createdAt;
-    const hour = time.substr(11, 2);
-    console.log("how time looks afer this method", hour);
-    console.log("what do i get as time", time);
-    // this.props.loadRisk();
-    this.props.loadTickets();
-    this.props.selectTicket(this.props.match.params.id);
+    this.props.loadComments(this.props.match.params.id);
+
+    // console.log("co to jest auth", this.props.auth);
+    // const time = this.props.ticket.createdAt;
+    // const hour = time.substr(11, 2);
+    // console.log("how time looks afer this method", hour);
+    // console.log("what do i get as time", time);
+    // // this.props.loadRisk();
+    // this.props.loadTickets(this.props.event.id);
+    // this.props.selectTicket(this.props.match.params.id);
   }
 
   calculateRiskForComments() {
@@ -74,6 +73,8 @@ class TicketDetailContainer extends Component {
   }
 
   render() {
+    const eventId = this.props.match.params.eventId;
+    const ticketId = this.props.match.params.id;
     const imageUrl = this.props.ticket.imageUrl;
     const price = this.props.ticket.price;
     const description = this.props.ticket.description;
@@ -86,19 +87,21 @@ class TicketDetailContainer extends Component {
           <img class="Concert image" alt="Concert image" src={imageUrl}></img>
         </div>
         <p>price of ticket :{price} euro </p>
-        <p>
+        <p>iddddd {this.props.match.params.id} </p>
+        {/* <p>
           We calculated that the risk of this ticket being a fraud is{" "}
           {this.calculateRisk()} %
-        </p>
+        </p> */}
         <p>description of ticket :{description}</p>
         <h3>COMMENTS :</h3>
-        <CreateCommentContainer />
+        <CreateCommentContainer ticketId={this.props.match.params.id} />
 
         {this.props.comments.map(comment => (
           <Comment
             comment={comment.comment}
             userId={comment.id}
             username={comment.user.username}
+            ticketId={this.props.match.params.id}
           />
         ))}
       </div>

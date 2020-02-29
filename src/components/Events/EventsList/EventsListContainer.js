@@ -9,6 +9,7 @@ class EventsListContainer extends React.Component {
 
     this.props.loadEvents();
   }
+
   onClick = async eventId => {
     console.log("this button does something! and this is the id: ", this.props);
 

@@ -19,7 +19,7 @@ class CreateCommentContainer extends Component {
 
     console.log("what is my state here?????", this.state);
 
-    this.props.createComment(this.state.comment, this.props.ticket.id);
+    this.props.createComment(this.state.comment, this.props.ticketId);
     this.setState({ comment: "", eventId: "", ticketId: "" });
   };
 

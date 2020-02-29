@@ -17,7 +17,7 @@ class TicketsList extends Component {
         </div>
         <p>{this.props.price} euro </p>
         <p>{this.props.description}</p>
-        <Link to={`/event/${this.props.eventId}/ticket/${this.props.id}`}>
+        <Link to={`/ticket/${this.props.id}`}>
           <button onClick={() => this.props.onClick(this.props.id)}>
             Check ticket
           </button>{" "}

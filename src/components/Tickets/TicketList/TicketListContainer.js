@@ -2,14 +2,11 @@ import React from "react";
 import { loadTickets, selectTicket } from "../../../actions/tickets";
 import { connect } from "react-redux";
 import TicketsList from "./TicketList";
+import CreateTicketContainer from "../CreateTicketContainer";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    console.log("JAKIE JA MAM PROPY?", this.props.event);
-    const eventId = this.props.event.id;
-    console.log("do i have event id in ticket component?", eventId);
-
-    this.props.loadTickets(eventId);
+    this.props.loadTickets(this.props.match.params.id);
   }
 
   onClick = async ticketId => {
@@ -30,8 +27,10 @@ class TicketListContainer extends React.Component {
           <div>Loading...</div>
         ) : (
           <div className="Searcher">
+            <CreateTicketContainer eventId={this.props.match.params.id} />
             <h1> 🎼 TICKETS FOR THIS CONCERT</h1>
             <h2>~ EVENT NAME ~ {this.props.event.title} ~</h2>
+            <h1>hello {this.props.match.params.id}</h1>
             {this.props.tickets.map(ticket => (
               <TicketsList
                 id={ticket.id}

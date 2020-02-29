@@ -13,27 +13,25 @@ function createCommentSuccess(comment) {
   };
 }
 
-export const createComment = (comment, eventId) => {
+export const createComment = (comment, ticketId) => {
   return async function(dispatch, getState) {
-    console.log("what is in my state?", getState());
+    // console.log("what is in my state?", getState());
 
     const stateData = getState().auth.data;
     const token = stateData.token;
-    const eventId = getState().events.selectedEvent.id;
-    console.log("what is my ticket id?", getState().tickets.selectedTicket.id);
-    console.log("DO I HAVE MY EVENT ID?", getState().events.selectedEvent.id);
-    const ticketId = getState().tickets.selectedTicket.id;
-    console.log("do i have my ticket id ??????", ticketId);
+    // const eventId = getState().events.selectedEvent.id;
+    // console.log("what is my ticket id?", getState().tickets.selectedTicket.id);
+    // console.log("DO I HAVE MY EVENT ID?", getState().events.selectedEvent.id);
+    // const ticketId = getState().tickets.selectedTicket.id;
+    // console.log("do i have my ticket id ??????", ticketId);
     const response = await axios({
       method: "POST",
-      url: `http://localhost:4000/event/${eventId}/ticket/${ticketId}/comment`,
+      url: `http://localhost:4000/ticket/${ticketId}/comment`,
       ticketId,
-      eventId,
       headers: { authorization: `Bearer ${token}` },
       data: {
         comment,
-        ticketId,
-        eventId
+        ticketId
       }
     });
 
@@ -55,18 +53,16 @@ export function loadComments(ticketId) {
   console.log("is this running ?");
   return async function(dispatch, getState) {
     try {
-      console.log(
-        "O CO CHODZI ???? ,do i have my event id",
-        getState().events.selectedEvent
-      );
-      const eventId = getState().events.selectedEvent.id;
-      const ticketId = getState().tickets.selectedTicket.id;
+      // console.log(
+      //   "O CO CHODZI ???? ,do i have my event id",
+      //   getState().events.selectedEvent
+      // );
+      // const eventId = getState().events.selectedEvent.id;
+      // const ticketId = getState().tickets.selectedTicket.id;
 
-      console.log("CONSOLOS do i have my event id????", eventId);
+      // console.log("CONSOLOS do i have my event id????", eventId);
       console.log("CONSOLOS do i have my TICKET id????", ticketId);
-      const response = await axios.get(
-        `${baseUrl}/event/${eventId}/ticket/${ticketId}/comment`
-      );
+      const response = await axios.get(`${baseUrl}/ticket/${ticketId}/comment`);
       const { data } = response;
       console.log("what is my response here FROM COMMENTS?", response);
 

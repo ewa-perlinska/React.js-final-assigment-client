@@ -4,11 +4,16 @@ import { connect } from "react-redux";
 import { createTicket } from "../../../actions/tickets";
 
 class CreateTicketContainer extends Component {
+  componentDidMount() {
+    console.log(
+      "waaaaaaaaat do i get as propssss here ??!!!?!?! ",
+      this.props.eventId
+    );
+  }
   state = {
     imageUrl: "",
     price: "",
-    description: "",
-    eventId: ""
+    description: ""
   };
 
   handleChange = event => {
@@ -25,10 +30,10 @@ class CreateTicketContainer extends Component {
         this.state.imageUrl,
         this.state.price,
         this.state.description,
-        this.props.event.id
+        this.props.eventId
       )
     );
-    this.setState({ imageUrl: "", price: "", description: "", eventId: "" });
+    this.setState({ imageUrl: "", price: "", description: "" });
   };
 
   render() {
@@ -46,7 +51,7 @@ class CreateTicketContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE IN MSTP", state);
+  console.log("STATE IN MSTP whaaaat do i have????", state);
   return {
     events: state.events.allEvents,
     event: state.events.selectedEvent,

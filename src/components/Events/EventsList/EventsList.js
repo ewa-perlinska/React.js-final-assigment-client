@@ -15,7 +15,7 @@ class EventsList extends Component {
         ></img>
         <p>{this.props.date}</p>
         <p>{this.props.description}</p>
-        <Link to={`/event/${this.props.id}/tickets/`}>
+        <Link to={`/event/${this.props.id}`}>
           <button onClick={() => this.props.onClick(this.props.id)}>
             ~ CHECK TICKETS ~
           </button>{" "}
