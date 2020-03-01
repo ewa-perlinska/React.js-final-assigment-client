@@ -4,21 +4,32 @@ import CreateCommentContainer from "../../Comments/CreateCommentContainer";
 import { loadComments } from "../../../actions/comments";
 import Comment from "../TicketDetails/Comment";
 import { loadTickets, selectTicket } from "../../../actions/tickets";
+import { Link } from "react-router-dom";
 
 class TicketDetailContainer extends Component {
   componentDidMount() {
     this.props.loadComments(this.props.match.params.id);
 
-    // console.log("co to jest auth", this.props.auth);
-    // const time = this.props.ticket.createdAt;
+    console.log("THIS PROPS COMMENTS", this.props.comments);
+    const time = this.props.ticket.createdAt;
     // const hour = time.substr(11, 2);
     // console.log("how time looks afer this method", hour);
     // console.log("what do i get as time", time);
     // // this.props.loadRisk();
     // this.props.loadTickets(this.props.event.id);
-    // this.props.selectTicket(this.props.match.params.id);
+    this.props.selectTicket(this.props.match.params.id);
   }
 
+  // onClick = async ticketId => {
+  //   console.log("this button does something! and this is the id: ", this.props);
+
+  //   try {
+  //     this.props.selectTicket(ticketId);
+  //     console.log("do i have my ticket id ?", ticketId);
+  //   } catch (error) {
+  //     console.warn("error test:", error);
+  //   }
+  // };
   calculateRiskForComments() {
     const commentsAmount = this.props.comments.length;
     if (commentsAmount > 3) {
@@ -58,9 +69,8 @@ class TicketDetailContainer extends Component {
 
   calculateRisk() {
     const riskNumber =
-      this.calculateRiskForComments() +
-      this.calculateRiskForPrice() +
-      this.calculateRiskforTime();
+      this.calculateRiskForComments() + this.calculateRiskForPrice();
+    +this.calculateRiskforTime();
     const riskNumbertotal = Number.parseFloat(riskNumber).toFixed(0);
 
     if (riskNumbertotal < 95 && riskNumbertotal > 5) {
@@ -88,21 +98,22 @@ class TicketDetailContainer extends Component {
         </div>
         <p>price of ticket :{price} euro </p>
         <p>iddddd {this.props.match.params.id} </p>
-        {/* <p>
+        <p>
           We calculated that the risk of this ticket being a fraud is{" "}
           {this.calculateRisk()} %
-        </p> */}
+        </p>
         <p>description of ticket :{description}</p>
-        <h3>COMMENTS :</h3>
+        <Link to={`/details/${this.props.match.params.id}`}>
+          <button>~ EDIT TICKET DETAILS ~</button>{" "}
+        </Link>
+        <h3>~ COMMENTS : ~ </h3>
         <CreateCommentContainer ticketId={this.props.match.params.id} />
-
+        <h3> LIST OF COMMENTS :</h3>
         {this.props.comments.map(comment => (
-          <Comment
-            comment={comment.comment}
-            userId={comment.id}
-            username={comment.user.username}
-            ticketId={this.props.match.params.id}
-          />
+          <div>
+            {/* <p>{comment.user.username}</p> */}
+            <p>{comment.comment}</p>
+          </div>
         ))}
       </div>
     );

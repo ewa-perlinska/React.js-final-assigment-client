@@ -16,7 +16,10 @@ export default function(state = initialState, action) {
     case COMMENT_CREATE_SUCCESS:
       return {
         ...state,
-        allComments: [...state.allComments, action.payload],
+        selectedCommentsForOneTicket: [
+          ...state.selectedCommentsForOneTicket,
+          action.payload
+        ],
         createdComment: action.payload
       };
     default:

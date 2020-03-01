@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import CommentForm from "./CommentForm";
 import { connect } from "react-redux";
-import { createComment } from "../../actions/comments";
+import { createComment, loadComments } from "../../actions/comments";
 
 class CreateCommentContainer extends Component {
   state = {
-    comment: "",
-    eventId: "",
-    ticketId: ""
+    comment: ""
   };
 
   handleChange = event => {
@@ -20,7 +18,8 @@ class CreateCommentContainer extends Component {
     console.log("what is my state here?????", this.state);
 
     this.props.createComment(this.state.comment, this.props.ticketId);
-    this.setState({ comment: "", eventId: "", ticketId: "" });
+    this.setState({ comment: "" });
+    this.props.loadComments(this.props.ticketId);
   };
 
   render() {
@@ -46,6 +45,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { createComment })(
+export default connect(mapStateToProps, { createComment, loadComments })(
   CreateCommentContainer
 );

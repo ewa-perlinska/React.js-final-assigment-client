@@ -20,8 +20,7 @@ export default function(state = initialState, action) {
     case TICKET_CREATE_SUCCESS:
       return {
         ...state,
-        allTickets: [...state.allTickets, action.payload],
-        createTicket: action.payload
+        allTickets: [...state.allTickets, action.payload]
       };
     case ONE_TICKET_SELECTED:
       return {

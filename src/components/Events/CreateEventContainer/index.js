@@ -33,6 +33,8 @@ class CreateEventContainer extends Component {
   render() {
     return (
       <div>
+        <h1> 🎼 CREATE EVENT </h1>
+        <h3>~ ENTER INFORMATION ABOUT EVENT BELOW ~</h3>
         <EventForm
           values={this.state}
           handleSubmit={this.handleSubmit}

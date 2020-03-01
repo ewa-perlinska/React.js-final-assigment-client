@@ -89,3 +89,32 @@ export function selectTicket(ticketId) {
     }
   };
 }
+
+export const TICKET_UPDATE_SUCCESS = "TICKET_UPDATE_SUCCESS";
+
+export function ticketUpdateSuccess(ticket) {
+  return {
+    type: TICKET_UPDATE_SUCCESS,
+    payload: ticket
+  };
+}
+
+export function updateTicket(imageUrl, price, description, ticketId) {
+  return async function(dispatch, getState) {
+    const response = await axios({
+      method: "PATCH",
+      url: `${baseUrl}/ticket/${ticketId}`,
+      ticketId,
+
+      data: {
+        imageUrl,
+        price,
+        description,
+        ticketId
+      }
+    });
+
+    console.log(response);
+    dispatch(ticketUpdateSuccess(response.data));
+  };
+}
