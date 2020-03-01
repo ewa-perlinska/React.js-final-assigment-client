@@ -28,10 +28,11 @@ class TicketListContainer extends React.Component {
         ) : (
           <div className="Searcher">
             <h1>CREATE TICKET FOR THIS CONCERT</h1>
+            <h2>~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ </h2>
             <CreateTicketContainer eventId={this.props.match.params.id} />
             <h1> 🎼 TICKETS FOR THIS CONCERT</h1>
-            <h2>~ EVENT NAME ~ {this.props.event.title} ~</h2>
-            <h1>hello {this.props.match.params.id}</h1>
+            <h2>~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ </h2>
+            {/* <h1>hello {this.props.match.params.id}</h1> */}
             {this.props.tickets.map(ticket => (
               <TicketsList
                 id={ticket.id}

@@ -39,6 +39,8 @@ class UpdateTicketContainer extends Component {
   render() {
     return (
       <div>
+        <h1> 🎼EDIT TICKETS FOR THIS CONCERT</h1>
+        <h2>~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ </h2>
         <TicketForm
           values={this.state}
           handleSubmit={this.handleSubmit}

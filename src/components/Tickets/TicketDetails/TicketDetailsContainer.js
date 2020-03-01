@@ -56,21 +56,22 @@ class TicketDetailContainer extends Component {
     }
   }
 
-  calculateRiskforTime() {
-    const time = this.props.ticket.createdAt;
-    const hour = time.substr(11, 2);
-    const hourNumber = parseInt(hour);
-    if (hourNumber > 9 && hourNumber < 17) {
-      return -10;
-    } else {
-      return 10;
-    }
-  }
+  // calculateRiskforTime() {
+  //   const time = this.props.ticket.createdAt;
+  //   const hour = time.substr(11, 2);
+  //   const hourNumber = parseInt(hour);
+  //   if (hourNumber > 9 && hourNumber < 17) {
+  //     return -10;
+  //   } else {
+  //     return 10;
+  //   }
+  // }
 
   calculateRisk() {
     const riskNumber =
       this.calculateRiskForComments() + this.calculateRiskForPrice();
-    +this.calculateRiskforTime();
+    // this.calculateRiskforTime();
+
     const riskNumbertotal = Number.parseFloat(riskNumber).toFixed(0);
 
     if (riskNumbertotal < 95 && riskNumbertotal > 5) {
@@ -97,7 +98,7 @@ class TicketDetailContainer extends Component {
           <img class="Concert image" alt="Concert image" src={imageUrl}></img>
         </div>
         <p>price of ticket :{price} euro </p>
-        <p>iddddd {this.props.match.params.id} </p>
+        {/* <p>iddddd {this.props.match.params.id} </p> */}
         <p>
           We calculated that the risk of this ticket being a fraud is{" "}
           {this.calculateRisk()} %
